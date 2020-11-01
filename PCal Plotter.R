@@ -47,6 +47,8 @@ ggplot(input, aes(x = `Date Time`, y = as.numeric(`Rolling Average Interval`), c
   labs(title = "Poop", x = "Date Time", y = "Five Visit Rolling Average Interval Time (hours)")
 
 
+
+
 #ggplot(input, aes(x = `Date Time`, y = Interval, size = Interval, colour = Interval)) +
 #  geom_point() + 
 #  theme_minimal()
