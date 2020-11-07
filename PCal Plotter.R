@@ -35,9 +35,12 @@ input = fread(path_to_file, showProgress = TRUE, data.table = FALSE)
 input$`Date Time` = strptime(paste(input$Date, input$Time, sep=' '), format='%d %b %Y %H:%M:%S')
 input$`Date Time` = as.POSIXct(input$`Date Time`)
 
+# Order ascending
+input = input[order(input$`Date Time`), ]
+
 # Calculate interval between visits
 input$Interval = NA
-input$Interval[2:length(input$`Date Time`)] = difftime(input$`Date Time`[1:length(input$`Date Time`)-1], input$`Date Time`[2:length(input$`Date Time`)], units = "hours")
+input$Interval[2:length(input$`Date Time`)] = -difftime(input$`Date Time`[1:length(input$`Date Time`)-1], input$`Date Time`[2:length(input$`Date Time`)], units = "hours")
 
 # Import poop emoji
 poop = link_to_img(emoji_to_link("%F0%9F%92%A9"))
